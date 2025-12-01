@@ -1,0 +1,13 @@
+{% extends 'myApp/base.html' %}
+
+{% block title %}{{ student.name }}{% endblock %}
+
+{% block content %}
+<h1>{{ student.name }}</h1>
+<p><strong>Admission Number:</strong> {{ student.admission_number }}</p>
+<p><strong>Email:</strong> {{ student.email }}</p>
+<p><strong>Course:</strong> {{ student.course.title }}</p>
+<p><strong>Year of Study:</strong> {{ student.year_of_study }}</p>
+<p><strong>Date Joined:</strong> {{ student.date_joined }}</p>
+<a href="{% url 'students_list' %}">Back to Students</a>
+{% endblock %}
