@@ -3,11 +3,22 @@
 {% block title %}{{ student.name }}{% endblock %}
 
 {% block content %}
-<h1>{{ student.name }}</h1>
-<p><strong>Admission Number:</strong> {{ student.admission_number }}</p>
-<p><strong>Email:</strong> {{ student.email }}</p>
-<p><strong>Course:</strong> {{ student.course.title }}</p>
-<p><strong>Year of Study:</strong> {{ student.year_of_study }}</p>
-<p><strong>Date Joined:</strong> {{ student.date_joined }}</p>
-<a href="{% url 'students_list' %}">Back to Students</a>
+<div class="card shadow-sm p-4">
+
+    <h2 class="text-primary">{{ student.name }}</h2>
+    <hr>
+
+    <p><strong>Admission Number:</strong> {{ student.admission_number }}</p>
+    <p><strong>Email:</strong> {{ student.email }}</p>
+    <p><strong>Course:</strong> {{ student.course.title }}</p>
+    <p><strong>Year of Study:</strong> {{ student.year_of_study }}</p>
+    <p><strong>Date Joined:</strong> {{ student.date_joined }}</p>
+
+    <div class="mt-4">
+        <a href="{% url 'students_list' %}" class="btn btn-secondary">Back to Students</a>
+        <a href="{% url 'edit_student' student.id %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'delete_student' student.id %}" class="btn btn-danger">Delete</a>
+    </div>
+
+</div>
 {% endblock %}

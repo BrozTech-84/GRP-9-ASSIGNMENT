@@ -3,27 +3,42 @@
 {% block title %}Courses{% endblock %}
 
 {% block content %}
-<h1>Courses List</h1>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Code</th>
-            <th>Lecturer</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for course in courses %}
-        <tr>
-            <td><a href="{% url 'course_detail' course.id %}">{{ course.title }}</a></td>
-            <td>{{ course.code }}</td>
-            <td>{{ course.lecturer }}</td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="3">No courses found.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-primary">Courses List</h2>
+        <a href="{% url 'create_course' %}" class="btn btn-success">Add New Course</a>
+    </div>
+
+    <div class="table-responsive shadow-sm">
+        <table class="table table-hover table-bordered align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Code</th>
+                    <th>Lecturer</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr>
+                    <td><a href="{% url 'course_detail' course.id %}">{{ course.title }}</a></td>
+                    <td>{{ course.code }}</td>
+                    <td>{{ course.lecturer }}</td>
+                    <td>
+                        <a href="{% url 'edit_course' course.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{% url 'delete_course' course.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">No courses found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
 {% endblock %}

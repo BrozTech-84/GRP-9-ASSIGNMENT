@@ -3,6 +3,15 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h1>Welcome to the Workflow Assignment</h1>
-<p>Use the navigation menu to view Students or Courses.</p>
+<div class="text-center mt-5">
+
+    <h1 class="fw-bold text-primary">Welcome to the Workflow Assignment</h1>
+    <p class="lead mt-3">Use the navigation menu above to manage Students and Courses.</p>
+
+    <div class="mt-4">
+        <a href="{% url 'students_list' %}" class="btn btn-primary btn-lg me-2">View Students</a>
+        <a href="{% url 'courses_list' %}" class="btn btn-secondary btn-lg">View Courses</a>
+    </div>
+
+</div>
 {% endblock %}
